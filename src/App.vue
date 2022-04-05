@@ -34,7 +34,7 @@
         <p class="text-sm text-gray-600 rounded">Welcome, <span class="font-medium">{{ user?.name.first }}</span></p>
         <img :src="user?.picture.thumbnail" class="rounded-full w-8">
       </div>
-      <div class="flex-grow p-24">
+      <div class="flex-grow px-24 py-12">
         <router-view v-slot="{ Component }">
           <transition>
             <component :is="Component" :key="$route.fullPath" />
