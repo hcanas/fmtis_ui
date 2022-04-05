@@ -31,8 +31,8 @@
     <!-- Main Content -->
     <div class="h-full flex-grow flex flex-col bg-gray-100 overflow-y-auto">
       <div class="flex-shrink-0 flex justify-end items-center space-x-4 p-8">
-        <p class="text-sm text-gray-600 rounded">Welcome, <span class="font-medium">{{ user.name.first }}</span></p>
-        <img :src="user.picture.thumbnail" class="rounded-full w-8">
+        <p class="text-sm text-gray-600 rounded">Welcome, <span class="font-medium">{{ user?.name.first }}</span></p>
+        <img :src="user?.picture.thumbnail" class="rounded-full w-8">
       </div>
       <div class="flex-grow p-24">
         <router-view v-slot="{ Component }">
