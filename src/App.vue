@@ -1,3 +1,19 @@
+<script setup>
+  import { ref, computed, provide } from 'vue';
+  import Cookies from 'js-cookie';
+  
+  const user = computed(() => JSON.parse(Cookies.get('auth_user')));
+  
+  const year_options = ref([
+    { value: 2022, label: 2022 },
+    { value: 2023, label: 2023 },
+    { value: 2024, label: 2024 },
+    { value: 2025, label: 2025 },
+  ]);
+  
+  provide('year_options', year_options);
+</script>
+
 <template>
   <div class="w-full h-full flex">
     <!-- Sidebar -->
@@ -31,8 +47,8 @@
     <!-- Main Content -->
     <div class="h-full flex-grow flex flex-col bg-gray-100 overflow-y-auto">
       <div class="flex-shrink-0 flex justify-end items-center space-x-4 p-8">
-        <p class="text-sm text-gray-600 rounded">Welcome, <span class="font-medium">{{ user?.name.first }}</span></p>
-        <img :src="user?.picture.thumbnail" class="rounded-full w-8">
+        <p class="text-sm text-gray-600 rounded">Welcome, <span class="font-medium">{{ user.given_name }}</span></p>
+        <img class="rounded-full w-8">
       </div>
       <div class="flex-grow px-24 py-12">
         <router-view v-slot="{ Component }">
@@ -44,25 +60,6 @@
     </div>
   </div>
 </template>
-
-<script>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  
-  export default {
-    name: 'App',
-    setup() {
-      const user = ref(null);
-      
-      axios.get('https://randomuser.me/api')
-      .then(response => user.value = response.data.results[0]);
-      
-      return {
-        user,
-      };
-    },
-  }
-</script>
 
 <style>
   #sidebar a {
