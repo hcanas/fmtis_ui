@@ -260,7 +260,7 @@
           </div>
         </form>
         <div class="flex items-center space-x-4">
-          <p class="text-gray-600">Displaying {{ `${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + 1}-${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + grid_options.spliced_data.length }` }} of {{ grid_options.filtered_data.length }} items</p>
+          <p v-if="grid_options.pagination.max_page > 1" class="text-gray-600">Displaying {{ `${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + 1}-${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + grid_options.spliced_data.length }` }} of {{ grid_options.filtered_data.length }} items</p>
           <button type="button" v-if="grid_options.pagination.max_page > 1" @click="previousPage()" class="text-gray-400 hover:text-green-600"><i class="fas fa-chevron-left"></i></button>
           <button type="button" v-if="grid_options.pagination.max_page > 1" @click="nextPage()" class="text-gray-400 hover:text-green-600"><i class="fas fa-chevron-right"></i></button>
         </div>
@@ -290,7 +290,7 @@
         </div>
       </div>
       <div class="flex justify-end items-center space-x-4">
-        <p class="text-gray-600">Displaying {{ `${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + 1}-${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + grid_options.spliced_data.length }` }} of {{ grid_options.filtered_data.length }} items</p>
+        <p v-if="grid_options.pagination.max_page > 1" class="text-gray-600">Displaying {{ `${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + 1}-${(grid_options.pagination.page - 1) * grid_options.pagination.per_page + grid_options.spliced_data.length }` }} of {{ grid_options.filtered_data.length }} items</p>
         <button type="button" v-if="grid_options.pagination.max_page > 1" @click="previousPage()" class="text-gray-400 hover:text-green-600"><i class="fas fa-chevron-left"></i></button>
         <button type="button" v-if="grid_options.pagination.max_page > 1" @click="nextPage()" class="text-gray-400 hover:text-green-600"><i class="fas fa-chevron-right"></i></button>
       </div>
