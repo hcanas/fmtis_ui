@@ -176,7 +176,6 @@
     sortData();
     filterData();
     spliceData();
-    return true; // break loop
   };
   
   const updateFundSource = id => {
