@@ -6,7 +6,7 @@
     data: Object,
   });
   
-  const emit = defineEmits(['created']);
+  const emit = defineEmits(['created', 'updated']);
   
   const form_data = ref(props.data
     ? JSON.parse(JSON.stringify(props.data))
