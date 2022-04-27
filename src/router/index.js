@@ -21,6 +21,10 @@ const routes = [
     component: () => import('../views/work_financial_plans/WfpList.vue'),
   },
   {
+    path: '/wfp/:id',
+    component: () => import('../views/work_financial_plans/WfpProfile.vue')
+  },
+  {
     path: '/apps',
     component: () => import('../views/annual_procurement_plans/AppList.vue'),
   },
@@ -60,7 +64,7 @@ router.beforeEach((to, from) => {
             if (permission.offices.length > 0) {
               permission.offices.forEach(office => {
                 permissions.find(item => item.name === permission.name).offices.push({
-                  id: office.id,
+                  id: office.office_id,
                   name: office.name,
                 });
               });
