@@ -265,7 +265,7 @@
         </div>
       </div>
       <div class="flex justify-between flex-wrap">
-        <div v-for="fund_source in grid_options.spliced_data" :key="fund_source.id" class="w-96 flex flex-col space-y-4 bg-white p-4 mb-8 rounded shadow-lg">
+        <div v-for="fund_source in grid_options.spliced_data" :key="fund_source.id" class="w-96 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
           <div>
             <p class="text-sm text-gray-400 uppercase font-bold">Amount</p>
             <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(fund_source.amount) }}</p>

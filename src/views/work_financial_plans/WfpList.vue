@@ -243,7 +243,7 @@
         </div>
       </div>
       <div class="flex justify-between flex-wrap">
-        <div v-for="wfp in grid_options.spliced_data" :key="wfp.id" class="w-200 flex flex-col space-y-4 bg-white p-4 mb-8 rounded shadow-lg">
+        <div v-for="wfp in grid_options.spliced_data" :key="wfp.id" class="w-200 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
           <div class="flex items-stretch">
             <div class="flex-grow">
               <p class="text-sm text-gray-400 uppercase font-bold">Cost</p>

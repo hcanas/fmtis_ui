@@ -355,7 +355,7 @@
           </div>
         </div>
         <div class="flex justify-between flex-wrap">
-          <div v-for="ppmp in grid_options.spliced_data" :key="ppmp.id" class="w-200 flex flex-col space-y-4 bg-white p-4 mb-8 rounded shadow-lg">
+          <div v-for="ppmp in grid_options.spliced_data" :key="ppmp.id" class="w-200 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
             <div class="flex-grow">
               <p class="text-sm text-gray-400 uppercase font-bold">Estimated Budget</p>
               <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(ppmp.quantity * ppmp.abc) }}</p>
