@@ -183,7 +183,7 @@
         </div>
       </div>
       <div class="flex justify-between flex-wrap">
-        <div v-for="app in grid_options.spliced_data" :key="app.id" class="w-200 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
+        <div v-for="app in grid_options.spliced_data" :key="app.id" class="w-196 flex flex-col space-y-8 bg-white p-8 mb-12 rounded shadow-lg">
           <div class="flex-grow">
             <p class="text-sm text-gray-400 uppercase font-bold">Total Amount</p>
             <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(app.quantity * app.abc) }}</p>
@@ -335,7 +335,7 @@
 </template>
 
 <style scoped>
-  .w-200 {
-    width: 50rem;
+  .w-196 {
+    width: 49rem;
   }
 </style>

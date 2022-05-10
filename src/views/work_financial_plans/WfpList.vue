@@ -221,7 +221,7 @@
       </button>
     </div>
     <div class="flex-grow flex-col space-y-4">
-      <div class="flex-shrink-0 flex justify-between items-center space-x-4">
+      <div class="flex-shrink-0 flex justify-between items-center">
         <form @submit.prevent>
           <div class="flex items-center space-x-4">
             <input type="search" v-model="grid_options.filter_text" class="px-3 py-1 border rounded" placeholder="Search keyword..." />
@@ -243,7 +243,7 @@
         </div>
       </div>
       <div class="flex justify-between flex-wrap">
-        <div v-for="wfp in grid_options.spliced_data" :key="wfp.id" class="w-200 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
+        <div v-for="wfp in grid_options.spliced_data" :key="wfp.id" class="w-196 flex flex-col space-y-8 bg-white p-8 mb-12 rounded shadow-lg">
           <div class="flex items-stretch">
             <div class="flex-grow">
               <p class="text-sm text-gray-400 uppercase font-bold">Cost</p>
@@ -310,7 +310,7 @@
 </template>
 
 <style scoped>
-  .w-200 {
-    width: 50rem;
+  .w-196 {
+    width: 49rem;
   }
 </style>
