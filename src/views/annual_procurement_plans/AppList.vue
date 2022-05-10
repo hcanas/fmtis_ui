@@ -247,11 +247,11 @@
                 <span class="text-xs uppercase font-medium">March</span>
                 <span>{{ formatNumber(app.milestone_3 ?? 0) }}</span>
               </div>
-              <div class="w-1/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-1/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q1 Quantity</span>
                 <span>{{ formatNumber((app.milestone_1/1 ?? 0) + (app.milestone_2/1 ?? 0) + (app.milestone_3/1 ?? 0) ?? 0) }}</span>
               </div>
-              <div class="w-2/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-2/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q1 Amount</span>
                 <span>{{ formatCurrency(((app.milestone_1/1 ?? 0) + (app.milestone_2/1 ?? 0) + (app.milestone_3/1 ?? 0)) * app.abc) }}</span>
               </div>
@@ -269,11 +269,11 @@
                 <span class="text-xs uppercase font-medium">June</span>
                 <span>{{ formatNumber(app.milestone_6 ?? 0) }}</span>
               </div>
-              <div class="w-1/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-1/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q2 Quantity</span>
                 <span>{{ formatNumber((app.milestone_4/1 ?? 0) + (app.milestone_5/1 ?? 0) + (app.milestone_6/1 ?? 0) ?? 0) }}</span>
               </div>
-              <div class="w-2/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-2/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q2 Amount</span>
                 <span>{{ formatCurrency(((app.milestone_4/1 ?? 0) + (app.milestone_5/1 ?? 0) + (app.milestone_6/1 ?? 0)) * app.abc) }}</span>
               </div>
@@ -291,11 +291,11 @@
                 <span class="text-xs uppercase font-medium">Sept</span>
                 <span>{{ formatNumber(app.milestone_9 ?? 0) }}</span>
               </div>
-              <div class="w-1/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-1/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q3 Quantity</span>
                 <span>{{ formatNumber((app.milestone_7/1 ?? 0) + (app.milestone_8/1 ?? 0) + (app.milestone_9/1 ?? 0) ?? 0) }}</span>
               </div>
-              <div class="w-2/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-2/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q3 Amount</span>
                 <span>{{ formatCurrency(((app.milestone_7/1 ?? 0) + (app.milestone_8/1 ?? 0) + (app.milestone_9/1 ?? 0)) * app.abc) }}</span>
               </div>
@@ -313,11 +313,11 @@
                 <span class="text-xs uppercase font-medium">Dec</span>
                 <span>{{ formatNumber(app.milestone_12 ?? 0) }}</span>
               </div>
-              <div class="w-1/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-1/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q4 Quantity</span>
                 <span>{{ formatNumber((app.milestone_10/1 ?? 0) + (app.milestone_11/1 ?? 0) + (app.milestone_12/1 ?? 0) ?? 0) }}</span>
               </div>
-              <div class="w-2/6 flex flex-col items-center p-2 border rounded">
+              <div class="w-2/6 flex flex-col items-center bg-gray-600 text-white p-2 border rounded">
                 <span class="text-xs uppercase font-medium">Q4 Amount</span>
                 <span>{{ formatCurrency(((app.milestone_10/1 ?? 0) + (app.milestone_11/1 ?? 0) + (app.milestone_12/1 ?? 0)) * app.abc) }}</span>
               </div>
