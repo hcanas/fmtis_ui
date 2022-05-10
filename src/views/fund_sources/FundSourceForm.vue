@@ -130,7 +130,7 @@
           <span v-if="form_errors.hasOwnProperty('amount')" class="text-sm text-red-600 py-1">{{ form_errors.amount[0] }}</span>
         </div>
         <div class="flex justify-center">
-          <button type="button" @click="saveData()" :disabled="form_options.saving_data" class="w-64 text-gray-600 bg-gray-200 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded">
+          <button type="button" @click="saveData()" :disabled="form_options.saving_data" class="w-64 text-gray-600 bg-gray-200 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded transition">
             <div v-if="!form_options.saving_data" class="flex justify-center items-center space-x-2">
               <i class="fas fa-save"></i>
               <span>Save Fund Source</span>
