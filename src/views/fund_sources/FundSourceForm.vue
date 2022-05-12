@@ -12,7 +12,7 @@
     ? JSON.parse(JSON.stringify(props.data))
     : {
       year: new Date().getFullYear(),
-      name: 'GAA',
+      name: 'General Appropriations Act',
       program: '',
       amount: 0.00,
       office_id: null,
@@ -24,9 +24,9 @@
   const form_options = ref({
     year_options: inject('year_options'),
     name_options: [
-      { value: 'GAA', label: 'General Appropriations Act' },
-      { value: 'SAA', label: 'Sub-Allotment Advice' },
-      { value: 'CO', label: 'Capital Outlay' },
+      { value: 'General Appropriations Act', label: 'General Appropriations Act' },
+      { value: 'Sub-Allotment Advice', label: 'Sub-Allotment Advice' },
+      { value: 'Capital Outlay', label: 'Capital Outlay' },
     ],
     office_options: [],
     saving_data: false,

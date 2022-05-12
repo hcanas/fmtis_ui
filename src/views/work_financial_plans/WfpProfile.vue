@@ -257,12 +257,12 @@
     <div class="flex flex-col">
       <h2 class="text-2xl text-gray-600 font-medium">WFP Details</h2>
     </div>
-    <div class="flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
+    <div class="flex flex-col space-y-8 bg-white p-8 rounded shadow-lg">
       <div class="flex items-start">
         <div class="flex-grow">
           <p class="text-sm text-gray-400 uppercase font-bold">Cost</p>
           <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(wfp.cost) }}</p>
-          <p class="text-sm text-gray-500">{{ formatCurrency(wfp.cost - wfp.allocated) }} remaining</p>
+          <p class="text-sm text-gray-500">{{ formatCurrency(wfp.cost - wfp.allocated) }} {{ `(${(100 - (wfp.allocated / wfp.cost) * 100).toLocaleString()}%)` }} remaining</p>
         </div>
         <p class="text-xs text-white uppercase font-bold px-4 py-1 rounded" :class="{ 'bg-green-600': wfp.status === 'approved', 'bg-gray-400': wfp.status !== 'approved' }">{{ wfp.status }}</p>
       </div>
@@ -273,7 +273,7 @@
         </div>
         <div class="flex-grow w-1/2">
           <p class="text-sm text-gray-400 uppercase font-bold">Year</p>
-          <p class="text-gray-600 font-medium">{{ wfp.year }}</p>
+          <p class="text-gray-600 font-medium">{{ wfp.fund_source.year }}</p>
         </div>
       </div>
       <div class="flex items-stretch">
@@ -289,7 +289,7 @@
       <div class="flex items-stretch">
         <div class="flex-grow w-1/2">
           <p class="text-sm text-gray-400 uppercase font-bold">Office</p>
-          <p class="text-gray-600 font-medium">{{ `${wfp.office.name} (${wfp.office.short_name})` }}</p>
+          <p class="text-gray-600 font-medium">{{ `${wfp.fund_source.office.name} (${wfp.fund_source.office.short_name})` }}</p>
         </div>
         <div class="flex-shrink-0 w-1/2">
           <p class="text-sm text-gray-400 uppercase font-bold">Targets</p>
@@ -315,7 +315,7 @@
         </div>
         <div class="flex items-center space-x-2">
           <button @click="updateWfp"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
-          <button v-if="wfp.ppmp_count === 0" @click="deleteFundSource(wfp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
+          <button v-if="wfp.allocated === null" @click="deleteFundSource(wfp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
           <button v-if="wfp.status === 'pending'" @click="deleteFundSource(wfp.id)"><i class="fas fa-thumbs-up text-sm text-gray-500 hover:text-green-600"></i></button>
         </div>
       </div>
@@ -355,10 +355,12 @@
           </div>
         </div>
         <div class="flex justify-between flex-wrap">
-          <div v-for="ppmp in grid_options.spliced_data" :key="ppmp.id" class="w-200 flex flex-col space-y-4 bg-white p-8 mb-8 rounded shadow-lg">
-            <div class="flex-grow">
-              <p class="text-sm text-gray-400 uppercase font-bold">Estimated Budget</p>
-              <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(ppmp.quantity * ppmp.abc) }}</p>
+          <div v-for="ppmp in grid_options.spliced_data" :key="ppmp.id" class="w-196 flex flex-col space-y-8 bg-white p-8 mb-12 rounded shadow-lg">
+            <div class="flex items-stretch">
+              <div class="flex-grow">
+                <p class="text-sm text-gray-400 uppercase font-bold">Estimated Budget</p>
+                <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(ppmp.quantity * ppmp.abc) }}</p>
+              </div>
             </div>
             <div class="flex items-stretch">
               <div class="flex-grow w-1/2">
@@ -494,7 +496,7 @@
 </template>
 
 <style scoped>
-  .w-200 {
-    width: 50rem;
+  .w-196 {
+    width: 49rem;
   }
 </style>

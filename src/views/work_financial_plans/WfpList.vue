@@ -248,7 +248,7 @@
             <div class="flex-grow">
               <p class="text-sm text-gray-400 uppercase font-bold">Cost</p>
               <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(wfp.cost) }}</p>
-              <p class="text-sm text-gray-500">{{ formatCurrency(wfp.cost - wfp.allocated) }} remaining</p>
+              <p class="text-sm text-gray-500">{{ formatCurrency(wfp.cost - wfp.allocated) }} {{ `(${(100 - (wfp.allocated / wfp.cost) * 100).toLocaleString()}%)` }} remaining</p>
             </div>
             <div class="flex-shrink-0">
               <p class="text-xs text-white uppercase font-bold px-4 py-1 rounded" :class="{ 'bg-green-600': wfp.status === 'approved', 'bg-gray-400': wfp.status !== 'approved' }">{{ wfp.status }}</p>

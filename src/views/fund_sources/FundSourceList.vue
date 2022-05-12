@@ -269,7 +269,7 @@
           <div>
             <p class="text-sm text-gray-400 uppercase font-bold">Amount</p>
             <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(fund_source.amount) }}</p>
-            <p class="text-sm text-gray-500">{{ formatCurrency(fund_source.amount - fund_source.allocated) }} remaining</p>
+            <p class="text-sm text-gray-500">{{ formatCurrency(fund_source.amount - fund_source.allocated) }} {{ `(${(100 - (fund_source.allocated / fund_source.amount) * 100).toLocaleString()}%)` }} remaining</p>
           </div>
           <div>
             <p class="text-sm text-gray-400 uppercase font-bold">Office</p>
@@ -283,7 +283,7 @@
             </div>
             <div class="flex items-center space-x-2">
               <button @click="updateFundSource(fund_source.id)"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
-              <button v-if="fund_source.wfp_count === 0" @click="deleteFundSource(fund_source.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
+              <button v-if="fund_source.allocated === null" @click="deleteFundSource(fund_source.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
             </div>
           </div>
         </div>

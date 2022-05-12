@@ -12,7 +12,10 @@
   const form_data = ref(props.data
     ? JSON.parse(JSON.stringify(props.data))
     : {
-      year: new Date().getFullYear(),
+      fund_source: {
+        year: new Date().getFullYear(),
+        office_id: null,
+      },
       function_type: 'Strategic',
       deliverables: '',
       activities: '',
@@ -25,7 +28,6 @@
       item: '',
       cost: 0.00,
       fund_source_id: null,
-      office_id: null,
     });
   
   const form_error = ref(null);
@@ -46,7 +48,7 @@
   const loadFundSources = () => {
     form_options.value.fund_source_options = [];
     
-    axios.get(`${import.meta.env.VITE_API_URL}/office_fund_sources?year=${form_data.value.year}&office_id=${form_data.value.office_id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/office_fund_sources?year=${form_data.value.fund_source.year}&office_id=${form_data.value.fund_source.office_id}`)
     .then(response => {
       response.data.forEach(fund_source => {
         form_options.value.fund_source_options.push({
@@ -81,7 +83,7 @@
     }
   });
   
-  watch(() => form_data.value.office_id + ' ' + form_data.value.year, () => {
+  watch(() => form_data.value.fund_source.office_id + ' ' + form_data.value.fund_source.year, () => {
     form_data.value.fund_source_id = null;
     loadFundSources();
   });
@@ -139,14 +141,14 @@
         </div>
         <div class="flex flex-col">
           <label class="text-sm text-gray-600 font-medium uppercase">Year</label>
-          <select v-model="form_data.year" class="px-2 py-1 border rounded">
+          <select v-model="form_data.fund_source.year" class="px-2 py-1 border rounded">
             <option v-for="year in form_options.year_options" :key="year.value" :value="year.value">{{ year.label }}</option>
           </select>
           <span v-if="form_errors.hasOwnProperty('year')" class="text-sm text-red-600 py-1">{{ form_errors.year[0] }}</span>
         </div>
         <div class="flex flex-col">
           <label class="text-sm text-gray-600 font-medium uppercase">Office</label>
-          <select v-model="form_data.office_id" class="px-2 py-1 border rounded">
+          <select v-model="form_data.fund_source.office_id" class="px-2 py-1 border rounded">
             <option v-for="office in form_options.office_options" :key="office.value" :value="office.value">{{ office.label }}</option>
           </select>
           <span v-if="form_errors.hasOwnProperty('office_id')" class="text-sm text-red-600 py-1">{{ form_errors.office_id[0] }}</span>

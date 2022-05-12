@@ -184,9 +184,11 @@
       </div>
       <div class="flex justify-between flex-wrap">
         <div v-for="app in grid_options.spliced_data" :key="app.id" class="w-196 flex flex-col space-y-8 bg-white p-8 mb-12 rounded shadow-lg">
-          <div class="flex-grow">
-            <p class="text-sm text-gray-400 uppercase font-bold">Total Amount</p>
-            <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(app.quantity * app.abc) }}</p>
+          <div class="flex items-stretch">
+            <div class="flex-grow">
+              <p class="text-sm text-gray-400 uppercase font-bold">Total Amount</p>
+              <p class="text-3xl text-green-600 font-bold">{{ formatCurrency(app.quantity * app.abc) }}</p>
+            </div>
           </div>
           <div class="flex items-stretch">
             <div class="flex-grow w-1/2">
@@ -205,7 +207,7 @@
             </div>
             <div class="flex-shrink-0 w-1/2">
               <p class="text-sm text-gray-400 uppercase font-bold">Version</p>
-              <p class="text-gray-600 font-medium">{{ app.item.year }}</p>
+              <p class="text-gray-600 font-medium">{{ app.item.version }}</p>
             </div>
           </div>
           <div class="flex flex-col">
