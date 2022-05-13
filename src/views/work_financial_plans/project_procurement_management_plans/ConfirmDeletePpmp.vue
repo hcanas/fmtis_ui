@@ -16,12 +16,14 @@
 
 <template>
   <div class="flex flex-col space-y-8">
-    <div class="flex-shrink-0 flex justify-center items-center space-x-2 text-2xl">
-      <i class="fas fa-triangle-exclamation text-red-600"></i>
-      <span class="uppercase font-bold text-red-600">Delete PPMP</span>
-    </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col space-y-2">
+      <div class="flex-shrink-0 flex justify-center items-center space-x-2 text-2xl">
+        <i class="fas fa-triangle-exclamation text-red-600"></i>
+        <span class="uppercase font-bold text-red-600">Delete PPMP</span>
+      </div>
       <p class="text-center text-red-600">You are about to delete this project procurement management plan.</p>
+    </div>
+    <div class="flex flex-col space-y-1">
       <p class="flex items-baseline space-x-2 mt-4">
         <span class="flex-shrink-0 w-40 text-xs font-medium uppercase">Estimated Budget:</span>
         <span class="font-medium">{{ new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(props.data.quantity * props.data.abc) }}</span>

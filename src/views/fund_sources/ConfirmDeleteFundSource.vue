@@ -16,30 +16,32 @@
 
 <template>
   <div class="flex flex-col space-y-8">
-    <div class="flex-shrink-0 flex justify-center items-center space-x-2 text-2xl">
-      <i class="fas fa-triangle-exclamation text-red-600"></i>
-      <span class="uppercase font-bold text-red-600">Delete Fund Source</span>
-    </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col space-y-2">
+      <div class="flex-shrink-0 flex justify-center items-center space-x-2 text-2xl">
+        <i class="fas fa-triangle-exclamation text-red-600"></i>
+        <span class="uppercase font-bold text-red-600">Delete Fund Source</span>
+      </div>
       <p class="text-center text-red-600">You are about to delete this fund source.</p>
-      <p class="flex items-center space-x-2 mt-4">
-        <span class="w-16 text-xs font-medium uppercase">Amount:</span>
+    </div>
+    <div class="flex flex-col space-y-1">
+      <p class="flex items-center space-x-2">
+        <span class="w-24 text-xs font-medium uppercase">Amount:</span>
         <span class="font-medium">{{ new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(props.data.amount) }}</span>
       </p>
       <p class="flex items-center space-x-2">
-        <span class="w-16 text-xs font-medium uppercase">Year:</span>
+        <span class="w-24 text-xs font-medium uppercase">Year:</span>
         <span class="font-medium">{{ props.data.year }}</span>
       </p>
       <p class="flex items-center space-x-2">
-        <span class="w-16 text-xs font-medium uppercase">Office:</span>
+        <span class="w-24 text-xs font-medium uppercase">Office:</span>
         <span class="font-medium">{{ `${props.data.office.name} (${props.data.office.short_name})`}}</span>
       </p>
       <p class="flex items-center space-x-2">
-        <span class="w-16 text-xs font-medium uppercase">Name:</span>
+        <span class="w-24 text-xs font-medium uppercase">Name:</span>
         <span class="font-medium">{{ props.data.name }}</span>
       </p>
       <p class="flex items-center space-x-2">
-        <span class="w-16 text-xs font-medium uppercase">Program:</span>
+        <span class="w-24 text-xs font-medium uppercase">Program:</span>
         <span class="font-medium">{{ props.data.program }}</span>
       </p>
     </div>

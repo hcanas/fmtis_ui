@@ -136,9 +136,7 @@
   import Modal from "../../components/overlays/Modal.vue";
   import FundSourceForm from "./FundSourceForm.vue";
   import ConfirmDeleteFundSource from "./ConfirmDeleteFundSource.vue";
-  import MessageCreatedFundSource from "./MessageCreatedFundSource.vue";
-  import MessageUpdatedFundSource from "./MessageUpdatedFundSource.vue";
-  import MessageDeletedFundSource from "./MessageDeletedFundSource.vue";
+  import MessageSuccess from "../../components/messages/MessageSuccess.vue";
   
   const modal_options = ref({
     show: false,
@@ -168,8 +166,8 @@
     modal_options.value = {
       show: true,
       width: 30,
-      component: MessageCreatedFundSource,
-      data: data,
+      component: MessageSuccess,
+      data: `${formatCurrency(data.amount)} have been added to ${data.office.name}'s fund source.`,
     };
     
     grid_options.value.sorted_data.push(data);
@@ -191,8 +189,8 @@
     modal_options.value = {
       show: true,
       width: 30,
-      component: MessageUpdatedFundSource,
-      data: data,
+      component: MessageSuccess,
+      data: `${data.office.name}'s fund source have been updated.`,
     };
     
     grid_options.value.sorted_data.some((item, index) => {
@@ -216,11 +214,13 @@
   };
   
   const deletedFundSource = id => {
+    const data = grid_options.value.sorted_data.find(item => item.id === id);
+    
     modal_options.value = {
       show: true,
       width: 30,
-      component: MessageDeletedFundSource,
-      data: JSON.parse(JSON.stringify(grid_options.value.sorted_data.find(item => item.id === id))),
+      component: MessageSuccess,
+      data: `${formatCurrency(data.amount)} have been removed from ${data.office.name}'s fund source.`,
     };
     
     grid_options.value.sorted_data.some((item, index) => {
