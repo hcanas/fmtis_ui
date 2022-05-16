@@ -213,7 +213,7 @@
         <h2 class="text-3xl text-gray-600 font-medium">WFPs</h2>
         <p class="text-gray-400">Work Financial Plans</p>
       </div>
-      <button @click="createWfp()" type="button" class="bg-gray-200 px-3 py-1.5 border rounded hover:text-white hover:bg-green-600 transition">
+      <button @click="createWfp()" type="button" class="bg-gray-100 px-3 py-1.5 border rounded hover:text-white hover:bg-green-600 transition">
         <span class="flex items-center space-x-1">
           <i class="fas fa-plus"></i>
           <span class="font-medium">Add WFP</span>

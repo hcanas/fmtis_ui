@@ -238,7 +238,7 @@
   <div class="w-full h-full flex flex-col space-y-8">
     <div class="flex-shrink-0 flex justify-between items-center">
       <h1 class="text-3xl text-gray-600 font-medium">Fund Sources</h1>
-      <button type="button" @click="createFundSource" class="bg-gray-200 px-3 py-1.5 border rounded hover:text-white hover:bg-green-600 transition">
+      <button type="button" @click="createFundSource" class="bg-gray-100 px-3 py-1.5 border rounded hover:text-white hover:bg-green-600 transition">
         <span class="flex items-center space-x-1">
           <i class="fas fa-plus"></i>
           <span class="font-medium">Add Fund Source</span>

@@ -13,7 +13,7 @@
     </div>
     <p class="text-center text-green-600">{{ props.data }}</p>
     <div class="flex justify-center">
-      <button type="button" @click="emit('close')" class="text-gray-600 bg-gray-200 hover:text-white hover:bg-gray-600 font-medium px-4 py-1.5 border rounded">
+      <button type="button" @click="emit('close')" class="text-gray-600 bg-gray-100 hover:text-white hover:bg-gray-500 font-medium px-4 py-1.5 border rounded">
         <div class="flex justify-center items-center space-x-2">
           <i class="fas fa-times"></i>
           <span>Close</span>

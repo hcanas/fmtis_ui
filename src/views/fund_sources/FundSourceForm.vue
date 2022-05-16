@@ -6,7 +6,7 @@
     data: Object,
   });
   
-  const emit = defineEmits(['created', 'updated']);
+  const emit = defineEmits(['created', 'updated', 'close']);
   
   const form_data = ref(props.data
     ? JSON.parse(JSON.stringify(props.data))
@@ -129,8 +129,14 @@
           <input type="number" v-model="form_data.amount" class="px-3 py-1 border rounded" />
           <span v-if="form_errors.hasOwnProperty('amount')" class="text-sm text-red-600 py-1">{{ form_errors.amount[0] }}</span>
         </div>
-        <div class="flex justify-center">
-          <button type="button" @click="saveData()" :disabled="form_options.saving_data" class="w-64 text-gray-600 bg-gray-200 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded transition">
+        <div class="flex justify-between items-center">
+          <button type="button" @click="emit('close')" class="w-64 text-gray-600 bg-gray-100 hover:text-white hover:bg-gray-500 font-medium py-1.5 border rounded transition">
+            <div class="flex justify-center items-center space-x-2">
+              <i class="fas fa-times"></i>
+              <span>{{ form_data.id ? 'Discard Changes' : 'Cancel' }}</span>
+            </div>
+          </button>
+          <button type="button" @click="saveData()" :disabled="form_options.saving_data" class="w-64 text-gray-600 bg-gray-100 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded transition">
             <div v-if="!form_options.saving_data" class="flex justify-center items-center space-x-2">
               <i class="fas fa-save"></i>
               <span>Save Fund Source</span>

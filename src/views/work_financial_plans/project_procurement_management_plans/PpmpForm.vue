@@ -16,7 +16,7 @@
     : {
       item_id: null,
       quantity: 0,
-      unit: 'kg',
+      unit: 'Kilogram',
       abc: 0.00,
       procurement_mode: 'Shopping',
       milestone_1: null,
@@ -42,13 +42,13 @@
       { value: 'Public Bidding', label: 'Public Bidding' },
     ],
     unit_options: [
-      { value: 'kg', label: 'Kilogram' },
-      { value: 'cm', label: 'Centimeter' },
-      { value: 'm', label: 'Meter' },
+      { value: 'Kilogram', label: 'Kilogram' },
+      { value: 'Centimeter', label: 'Centimeter' },
+      { value: 'Meter', label: 'Meter' },
     ],
     item_filter: '',
     item_options: [],
-    selected_item: null,
+    selected_item: props.data?.item ?? null,
     saving_data: false,
   });
   
@@ -92,25 +92,27 @@
     if (form_data.value.id) {
       axios.put(`${import.meta.env.VITE_API_URL}/wfp/${wfp_id}/ppmps/${form_data.value.id}`, form_data.value)
       .then(response => emit('updatedPpmp', response.data))
-        .catch(error => {
-          if (typeof error.response.data === 'object') {
-            form_errors.value = error.response.data;
-          } else if (typeof error.response.data === 'string') {
-            form_error.value = error.response.data;
-          }
-        });
-    } else {
-      axios.post(`${import.meta.env.VITE_API_URL}/wfp/${wfp_id}/ppmps`, form_data.value)
-      .then(response => emit('createdPpmp', response.data))
       .catch(error => {
+        form_options.value.saving_data = false;
+        
         if (typeof error.response.data === 'object') {
           form_errors.value = error.response.data;
         } else if (typeof error.response.data === 'string') {
           form_error.value = error.response.data;
         }
       });
-      
-      form_options.value.saving_data = false;
+    } else {
+      axios.post(`${import.meta.env.VITE_API_URL}/wfp/${wfp_id}/ppmps`, form_data.value)
+      .then(response => emit('createdPpmp', response.data))
+      .catch(error => {
+        form_options.value.saving_data = false;
+        
+        if (typeof error.response.data === 'object') {
+          form_errors.value = error.response.data;
+        } else if (typeof error.response.data === 'string') {
+          form_error.value = error.response.data;
+        }
+      });
     }
   };
 </script>
@@ -132,7 +134,7 @@
               <p class="italic">{{ item.item_category.name }}</p>
               <p class="text-xs uppercase font-medium">{{ item.commodity_type }}</p>
               <p>{{ item.details }}</p>
-              <p class="text-sm">{{ `version ${item.year}` }}</p>
+              <p class="text-sm">{{ `version ${item.version}` }}</p>
             </div>
           </div>
           <div v-if="form_options.selected_item">
@@ -141,7 +143,7 @@
               <p class="italic">{{ form_options.selected_item.item_category.name }}</p>
               <p class="text-xs uppercase font-medium">{{ form_options.selected_item.commodity_type }}</p>
               <p>{{ form_options.selected_item.details }}</p>
-              <p class="text-xs italic">{{ `version ${form_options.selected_item.year}` }}</p>
+              <p class="text-xs italic">{{ `version ${form_options.selected_item.version}` }}</p>
               <div class="flex justify-end">
                 <button type="button" @click="changeSelectedItem" class="text-xs text-blue-600 uppercase font-medium hover:text-blue-400">Change</button>
               </div>
@@ -241,16 +243,22 @@
             </div>
           </div>
         </div>
-        
-        <div class="flex justify-center">
-          <button type="button" @click="saveData()" :disabled="form_options.saving_data" class="w-96 text-gray-600 bg-gray-200 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded">
+  
+        <div class="flex justify-between items-center">
+          <button type="button" @click="emit('close')" class="w-64 text-gray-600 bg-gray-100 hover:text-white hover:bg-gray-500 font-medium py-1.5 border rounded transition">
+            <div class="flex justify-center items-center space-x-2">
+              <i class="fas fa-times"></i>
+              <span>{{ form_data.id ? 'Discard Changes' : 'Cancel' }}</span>
+            </div>
+          </button>
+          <button type="button" @click="saveData()" class="w-64 text-gray-600 bg-gray-100 hover:text-white hover:bg-green-600 font-medium py-1.5 border rounded transition">
             <div v-if="!form_options.saving_data" class="flex justify-center items-center space-x-2">
               <i class="fas fa-save"></i>
-              <span>Save Project Procurement Management Plan</span>
+              <span>Save PPMP</span>
             </div>
             <div v-else class="flex justify-center items-center space-x-2">
               <i class="fas fa-spinner animate-spin"></i>
-              <span>Saving Project Procurement Management Plan</span>
+              <span>Saving PPMP</span>
             </div>
           </button>
         </div>

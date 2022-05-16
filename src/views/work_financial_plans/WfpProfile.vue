@@ -28,6 +28,7 @@
   
   // wfp
   import WfpForm from "./WfpForm.vue";
+  import ConfirmApproveWfp from "./ConfirmApproveWfp.vue";
   
   const wfp = ref(null);
   
@@ -51,6 +52,26 @@
       width: 30,
       component: MessageSuccess,
       data: 'WFP has been updated.',
+    };
+  };
+  
+  const approveWfp = () => {
+    modal_options.value = {
+      show: true,
+      width: 40,
+      component: ConfirmApproveWfp,
+      data: wfp.value,
+    };
+  };
+  
+  const approvedWfp = () => {
+    wfp.value.status = 'approved';
+  
+    modal_options.value = {
+      show: true,
+      width: 30,
+      component: MessageSuccess,
+      data: 'WFP has been approved.',
     };
   };
   
@@ -202,7 +223,13 @@
     sortData();
     filterData();
     spliceData();
-    closeModal();
+  
+    modal_options.value = {
+      show: true,
+      width: 30,
+      component: MessageSuccess,
+      data: 'Ppmp has been created.',
+    };
   };
   
   const updatePpmp = id => {
@@ -226,7 +253,13 @@
     sortData();
     filterData();
     spliceData();
-    closeModal();
+  
+    modal_options.value = {
+      show: true,
+      width: 30,
+      component: MessageSuccess,
+      data: 'Ppmp has been updated.',
+    };
   };
   
   const deletePpmp = id => {
@@ -248,7 +281,13 @@
     
     computeAllocatedCost();
     spliceData();
-    closeModal();
+    
+    modal_options.value = {
+      show: true,
+      width: 30,
+      component: MessageSuccess,
+      data: 'Ppmp has been deleted.',
+    };
   };
 </script>
 
@@ -314,9 +353,9 @@
           <span class="text-xs text-gray-400 font-medium">{{ new Date(wfp.updated_at).toLocaleString() }}</span>
         </div>
         <div class="flex items-center space-x-2">
-          <button @click="updateWfp"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
-          <button v-if="wfp.allocated === null" @click="deleteFundSource(wfp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
-          <button v-if="wfp.status === 'pending'" @click="deleteFundSource(wfp.id)"><i class="fas fa-thumbs-up text-sm text-gray-500 hover:text-green-600"></i></button>
+          <button v-if="wfp.status === 'pending'" @click="updateWfp"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
+          <button v-if="wfp.allocated === null && wfp.status === 'pending'" @click="deleteWfp(wfp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
+          <button v-if="wfp.status === 'pending'" @click="approveWfp(wfp.id)"><i class="fas fa-thumbs-up text-sm text-gray-500 hover:text-green-600"></i></button>
         </div>
       </div>
     </div>
@@ -379,7 +418,7 @@
               </div>
               <div class="flex-shrink-0 w-1/2">
                 <p class="text-sm text-gray-400 uppercase font-bold">Version</p>
-                <p class="text-gray-600 font-medium">{{ ppmp.item.year }}</p>
+                <p class="text-gray-600 font-medium">{{ ppmp.item.version }}</p>
               </div>
             </div>
             <div class="flex flex-col">
@@ -467,8 +506,8 @@
                 <span class="text-xs text-gray-400 font-medium">{{ new Date(ppmp.updated_at).toLocaleString() }}</span>
               </div>
               <div class="flex items-center space-x-2">
-                <button @click="updatePpmp(ppmp.id)"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
-                <button @click="deletePpmp(ppmp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
+                <button v-if="wfp.status === 'pending'" @click="updatePpmp(ppmp.id)"><i class="fas fa-pencil text-sm text-gray-500 hover:text-amber-500"></i></button>
+                <button v-if="wfp.status === 'pending'" @click="deletePpmp(ppmp.id)"><i class="fas fa-trash text-sm text-gray-500 hover:text-red-600"></i></button>
               </div>
             </div>
           </div>
@@ -487,6 +526,7 @@
       :is="modal_options.component"
       :data="modal_options.data"
       @updated="updatedWfp"
+      @approvedWfp="approvedWfp"
       @created-ppmp="createdPpmp"
       @updated-ppmp="updatedPpmp"
       @deleted-ppmp="deletedPpmp"
