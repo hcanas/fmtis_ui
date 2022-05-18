@@ -99,8 +99,7 @@
     if (filter_text) {
       grid_options.value.filtered_data = grid_options.value.sorted_data.filter(item => {
         return item.cost.toString().indexOf(filter_text) + 1
-          || item.fund_source.name.toLowerCase().indexOf(filter_text) + 1
-          || item.fund_source.program.toLowerCase().indexOf(filter_text) + 1;
+          || item.fund_source.name.toLowerCase().indexOf(filter_text) + 1;
       });
     } else {
       grid_options.value.filtered_data = grid_options.value.sorted_data;
@@ -257,7 +256,7 @@
           <div class="flex items-stretch">
             <div class="flex-grow">
               <p class="text-sm text-gray-400 uppercase font-bold">Fund Source</p>
-              <p class="text-gray-600 font-medium">{{ `${wfp.fund_source.name} - ${wfp.fund_source.program}` }}</p>
+              <p class="text-gray-600 font-medium">{{ wfp.fund_source.name }}</p>
             </div>
             <div class="flex-shrink-0">
               <p class="text-sm text-gray-400 uppercase font-bold">Timeframe</p>

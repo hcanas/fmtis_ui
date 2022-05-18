@@ -13,7 +13,6 @@
     : {
       year: new Date().getFullYear(),
       name: 'General Appropriations Act',
-      program: '',
       amount: 0.00,
       office_id: null,
     });
@@ -23,11 +22,6 @@
   
   const form_options = ref({
     year_options: inject('year_options'),
-    name_options: [
-      { value: 'General Appropriations Act', label: 'General Appropriations Act' },
-      { value: 'Sub-Allotment Advice', label: 'Sub-Allotment Advice' },
-      { value: 'Capital Outlay', label: 'Capital Outlay' },
-    ],
     office_options: [],
     saving_data: false,
   });
@@ -114,15 +108,8 @@
         </div>
         <div class="flex flex-col">
           <label class="text-sm text-gray-600 font-medium uppercase">Name</label>
-          <select v-model="form_data.name" class="px-2 py-1 border rounded">
-            <option v-for="name in form_options.name_options" :key="name.value" :value="name.value">{{ name.label }}</option>
-          </select>
+          <input type="text" v-model="form_data.name" class="px-3 py-1 border rounded" />
           <span v-if="form_errors.hasOwnProperty('name')" class="text-sm text-red-600 py-1">{{ form_errors.name[0] }}</span>
-        </div>
-        <div class="flex flex-col">
-          <label class="text-sm text-gray-600 font-medium uppercase">Program</label>
-          <input type="text" v-model="form_data.program" class="px-3 py-1 border rounded" />
-          <span v-if="form_errors.hasOwnProperty('program')" class="text-sm text-red-600 py-1">{{ form_errors.program[0] }}</span>
         </div>
         <div class="flex flex-col">
           <label class="text-sm text-gray-600 font-medium uppercase">Amount</label>

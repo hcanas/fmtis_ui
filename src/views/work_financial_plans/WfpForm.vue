@@ -53,7 +53,7 @@
       response.data.forEach(fund_source => {
         form_options.value.fund_source_options.push({
           value: fund_source.id,
-          label: `${fund_source.name} - ${fund_source.program} - ${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(fund_source.amount - fund_source.allocated)}`,
+          label: `${fund_source.name} - ${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(fund_source.amount - fund_source.allocated)}`,
         });
       });
       

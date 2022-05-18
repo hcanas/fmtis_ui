@@ -80,8 +80,7 @@
         return item.amount.toString().indexOf(filter_text) + 1
           || item.office.name.toLowerCase().indexOf(filter_text) + 1
           || item.office.short_name.toLowerCase().indexOf(filter_text) + 1
-          || item.name.toLowerCase().indexOf(filter_text) + 1
-          || item.program.toLowerCase().indexOf(filter_text) + 1;
+          || item.name.toLowerCase().indexOf(filter_text) + 1;
       });
     } else {
       grid_options.value.filtered_data = grid_options.value.sorted_data;
@@ -272,9 +271,12 @@
             <p class="text-sm text-gray-500">{{ formatCurrency(fund_source.amount - fund_source.allocated) }} {{ `(${(100 - (fund_source.allocated / fund_source.amount) * 100).toLocaleString()}%)` }} remaining</p>
           </div>
           <div>
+            <p class="text-sm text-gray-400 uppercase font-bold">Name</p>
+            <p class="text-gray-600 font-medium">{{ fund_source.name }}</p>
+          </div>
+          <div>
             <p class="text-sm text-gray-400 uppercase font-bold">Office</p>
             <p class="text-gray-600 font-medium">{{ `${fund_source.office.name} (${fund_source.office.short_name})` }}</p>
-            <p class="text-sm text-gray-500">{{ `${fund_source.name} - ${fund_source.program}` }}</p>
           </div>
           <div class="flex justify-between items-center">
             <div class="flex items-center space-x-2">

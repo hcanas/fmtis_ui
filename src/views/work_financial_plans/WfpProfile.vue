@@ -318,7 +318,7 @@
       <div class="flex items-stretch">
         <div class="flex-grow w-1/2">
           <p class="text-sm text-gray-400 uppercase font-bold">Fund Source</p>
-          <p class="text-gray-600 font-medium">{{ `${wfp.fund_source.name} - ${wfp.fund_source.program}` }}</p>
+          <p class="text-gray-600 font-medium">{{ wfp.fund_source.name }}</p>
         </div>
         <div class="flex-shrink-0 w-1/2">
           <p class="text-sm text-gray-400 uppercase font-bold">Timeframe</p>

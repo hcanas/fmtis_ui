@@ -40,10 +40,6 @@
         <span class="w-24 text-xs font-medium uppercase">Name:</span>
         <span class="font-medium">{{ props.data.name }}</span>
       </p>
-      <p class="flex items-center space-x-2">
-        <span class="w-24 text-xs font-medium uppercase">Program:</span>
-        <span class="font-medium">{{ props.data.program }}</span>
-      </p>
     </div>
     <div class="flex justify-between">
       <button type="button" @click="emit('close')" class="w-64 text-gray-600 bg-gray-100 hover:text-white hover:bg-gray-500 font-medium px-4 py-1.5 border rounded">
